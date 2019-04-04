@@ -30,7 +30,7 @@ const Navbar = () => {
 			<SearchBox
 				searchOnChange
 				queryOptions={{ analyzer: 'standard' }}
-				queryFields={['title^5', 'languages', 'text']}
+				queryFields={['title^5', 'authors']}
 				placeholder="Search movie title"
 			/>
 		</div>

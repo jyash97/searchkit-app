@@ -18,8 +18,9 @@ const resultCard = css`
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
-		font-size: 1em;
 		text-align: center;
+		font-size: 1em;
+		color: #262626;
 	}
 `;
 
@@ -29,7 +30,7 @@ const ResultCard = props => {
 	} = props;
 	return (
 		<div className={resultCard} key={_id}>
-			<img src={_source.poster} alt={_source.title} />
+			<img src={_source.image} alt={_source.title} />
 			<h1>{_source.title}</h1>
 		</div>
 	);

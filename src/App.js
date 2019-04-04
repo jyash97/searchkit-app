@@ -3,7 +3,7 @@ import { SearchkitProvider, SearchkitManager } from 'searchkit';
 import 'searchkit/theming/theme.scss';
 import { css, injectGlobal } from 'emotion';
 
-import { URL } from './constant';
+import { URL, CRED } from './constant';
 import Navbar from './components/Navbar';
 import Results from './components/Results';
 import Filters from './components/Filters';
@@ -36,7 +36,9 @@ const wrapper = css`
 `;
 
 const App = () => {
-	const sk = new SearchkitManager(`${URL}`);
+	const sk = new SearchkitManager(`${URL}`, {
+		basicAuth: `${CRED}`,
+	});
 	return (
 		<SearchkitProvider searchkit={sk}>
 			<>

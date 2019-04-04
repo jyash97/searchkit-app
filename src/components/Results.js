@@ -41,12 +41,7 @@ const Results = () => {
 		<div className={container}>
 			<SelectedFilters />
 			<div className={resultWrapper}>
-				<Hits
-					hitsPerPage={50}
-					highlightFields={['title']}
-					sourceFilter={['title', 'poster', 'imdbId']}
-					itemComponent={ResultCard}
-				/>
+				<Hits hitsPerPage={50} highlightFields={['title']} itemComponent={ResultCard} />
 			</div>
 			<Pagination showNumbers />
 			<NoHits

@@ -1,10 +1,10 @@
 import React from 'react';
 import { css } from 'emotion';
 import {
-	HierarchicalMenuFilter,
 	RangeFilter,
 	RefinementListFilter,
 	NumericRefinementListFilter,
+	DynamicRangeFilter,
 } from 'searchkit';
 
 const buttonStyles = css`
@@ -46,61 +46,42 @@ const filterWrapper = isVisible => css`
 
 const AllFilters = () => (
 	<>
-		<HierarchicalMenuFilter
-			fields={['type.raw', 'genres.raw']}
-			title="Categories"
-			id="categories"
+		<RefinementListFilter
+			id="authors"
+			title="Authors"
+			field="authors.keyword"
+			operator="OR"
+			size={10}
+		/>
+		<RefinementListFilter
+			field="language_code.keyword"
+			title="Language Code"
+			id="languages"
 			size={10}
 		/>
 		<RangeFilter
-			min={0}
-			max={100}
-			field="metaScore"
-			id="metascore"
-			title="Metascore"
+			min={1880}
+			max={2019}
+			field="original_publication_year"
+			id="publicationYear"
+			title="Publication Year"
 			showHistogram
 		/>
-		<RangeFilter
-			min={0}
-			max={10}
-			field="imdbRating"
-			id="imdbRating"
-			title="IMDB Rating"
+		<DynamicRangeFilter
+			field="average_rating_rounded"
+			id="rating"
+			title="Ratings"
 			showHistogram
-		/>
-		<RefinementListFilter
-			id="actors"
-			title="Actors"
-			field="actors.raw"
-			operator="OR"
-			size={10}
-		/>
-
-		<RefinementListFilter field="languages.raw" title="Languages" id="languages" size={10} />
-		<RefinementListFilter
-			translations={{ 'facets.view_more': 'View more writers' }}
-			id="writers"
-			title="Writers"
-			field="writers.raw"
-			operator="OR"
-			size={10}
-		/>
-		<RefinementListFilter
-			id="countries"
-			title="Countries"
-			field="countries.raw"
-			operator="OR"
-			size={10}
 		/>
 		<NumericRefinementListFilter
-			id="runtimeMinutes"
-			title="Length"
-			field="runtimeMinutes"
+			id="booksCount"
+			title="Books Count"
+			field="books_count"
 			options={[
 				{ title: 'All' },
-				{ title: 'up to 20', from: 0, to: 20 },
-				{ title: '21 to 60', from: 21, to: 60 },
-				{ title: '60 or more', from: 61, to: 1000 },
+				{ title: 'up to 50', from: 0, to: 50 },
+				{ title: '51 to 100', from: 51, to: 100 },
+				{ title: '100 or more', from: 101, to: 10000 },
 			]}
 		/>
 	</>
